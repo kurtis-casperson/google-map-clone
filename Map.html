@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Map Directions</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
@@ -17,38 +19,13 @@
             width: 100vw;
         }
     </style>
-    <script src='script.js' defer></script>
+    <script src='mapNavigation.js' defer></script>
+    
 </head>
 <!-- the map div is used to do simple styling above, to make the map fill the entire screen   -->
 <body>
   
    <div id="map"></div>
-   <script>
-    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-  enableHighAccuracy: true,
-})
-
-       mapboxgl.accessToken = 'pk.eyJ1Ijoia3VydGpvaG4iLCJhIjoiY2w1ajV0azB6MDgwbDNkcXB4d204czJ0ZyJ9.ixlp543beQr3tkuwpzVqtQ';
-       function setupMap(centerPostion) {
-       const map = new mapboxgl.Map({
-           container: 'map', // container ID
-           style: 'mapbox://styles/mapbox/streets-v11', // style URL
-           center: centerPostion, // starting position
-           zoom: 9 // starting zoom
-       });
-    }
-       // Add zoom and rotation controls to the map.
-       map.addControl(new mapboxgl.NavigationControl());
-   
-       function successLocation(position) {
-  setupMap([position.coords.longitude, position.coords.latitude])
-  console.log(position)
-}
-
-function errorLocation() {
-  console.log('errorLocation')
-}
-
-   </script>
+  
 </body>
 </html>
